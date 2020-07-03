@@ -6,11 +6,11 @@ resource "google_dns_managed_zone" "dns_zone" {
 
   labels = var.labels
 
-  private_visibility_config {
-    dynamic "networks" {
-      for_each = var.networks
-      content {
-        network_url = networks.value
+  dynamic "private_visibility_config" {
+    for_each = var.networks
+    content {
+      networks {
+        network_url = private_visibility_config.value
       }
     }
   }

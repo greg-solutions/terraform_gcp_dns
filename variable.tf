@@ -8,7 +8,8 @@ variable "dns_name" {
 }
 variable "networks" {
   type = list(string)
-  description = "(Required) The list of VPC networks that can see this zone."
+  default = []
+  description = "(Required, if type private) The list of VPC networks that can see this zone."
 }
 variable "type" {
   type = string
